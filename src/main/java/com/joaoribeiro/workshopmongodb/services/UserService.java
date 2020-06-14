@@ -34,22 +34,17 @@ public class UserService {
 		findById(id);
 		repository.deleteById(id);
 	}
-//
-//	public User update(Long id, User obj) {
-//		try {
-//			User entity = repository.getOne(id);
-//			updateData(entity, obj);
-//			return repository.save(entity);
-//		} catch (EntityNotFoundException e) {
-//			throw new ResourceNotFoundException(id);
-//		}
-//	}
-//
-//	private void updateData(User entity, User obj) {
-//		entity.setName(obj.getName());
-//		entity.setEmail(obj.getEmail());
-//		entity.setPhone(obj.getPhone());
-//	}
+
+	public User update(User obj) {
+		User entity = repository.findById(obj.getId()).get();
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+
+	private void updateData(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());
+	}
 
 	public User fromDTO(UserDTO objDto) {
 		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
