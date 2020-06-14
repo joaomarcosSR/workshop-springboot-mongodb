@@ -5,26 +5,28 @@ import java.time.Instant;
 
 public class CommentDTO implements Serializable {
 
-	private String id;
+	private static final long serialVersionUID = -4632829697702185997L;
+	
+	private String text;
 	private Instant date;
 	private AuthorDTO author;
 
 	public CommentDTO() {
 	}
 
-	public CommentDTO(String id, Instant date, AuthorDTO author) {
+	public CommentDTO(String text, Instant date, AuthorDTO author) {
 		super();
-		this.id = id;
+		this.text = text;
 		this.date = date;
 		this.author = author;
 	}
 
-	public String getId() {
-		return id;
+	public String getText() {
+		return text;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String text) {
+		this.text = text;
 	}
 
 	public Instant getDate() {
