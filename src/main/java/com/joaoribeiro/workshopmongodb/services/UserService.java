@@ -30,19 +30,10 @@ public class UserService {
 		return repository.insert(obj);
 	}
 
-	public User fromDTO(UserDTO objDto) {
-		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
+	public void delete(String id) {
+		findById(id);
+		repository.deleteById(id);
 	}
-
-//	public void delete(Long id) {
-//		try {
-//			repository.deleteById(id);
-//		} catch (EmptyResultDataAccessException e) {
-//			throw new ResourceNotFoundException(id);
-//		} catch (DataIntegrityViolationException e) {
-//			throw new DatabaseException(e.getMessage());
-//		}
-//	}
 //
 //	public User update(Long id, User obj) {
 //		try {
@@ -59,5 +50,9 @@ public class UserService {
 //		entity.setEmail(obj.getEmail());
 //		entity.setPhone(obj.getPhone());
 //	}
+
+	public User fromDTO(UserDTO objDto) {
+		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
+	}
 
 }
