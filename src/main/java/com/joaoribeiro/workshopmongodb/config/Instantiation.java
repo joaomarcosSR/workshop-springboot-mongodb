@@ -3,6 +3,7 @@ package com.joaoribeiro.workshopmongodb.config;
 import java.time.Instant;
 import java.util.Arrays;
 
+import org.apache.tomcat.util.digester.ArrayStack;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -40,6 +41,10 @@ public class Instantiation implements CommandLineRunner {
 				new AuthorDTO(maria));
 
 		postRepository.saveAll(Arrays.asList(post1, post2));
+		
+		maria.getPosts().addAll(Arrays.asList(post1,post2));
+		
+		userRepository.save(maria);
 	}
 
 }
